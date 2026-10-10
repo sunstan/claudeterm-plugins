@@ -20,6 +20,8 @@ To update a plugin, change its files and raise `version` in `plugin.json`.
 - Only code, data, docs and images (`.js .json .md .txt .css .svg .png .jpg .gif .webp`); no `node_modules`, no
   binaries, no links. 5 MB and 500 files at most.
 - A plugin runs sandboxed (no Node, no network): everything goes through `ctx`.
+- A plugin using an API newer than ClaudeTerm 2.0.0 says so with `engine`, so older versions do not offer it: the
+  `prompt` permission, `ctx.claude.insertPrompt`, `ctx.workspace.selection` and `ctx.commands` need `">=2.0.12"`.
 
 ## Review
 
@@ -32,5 +34,6 @@ for the fewest permissions you need:
 | (none) | the open project and the plugin's own folder, read only |
 | `process` | running programs and commands in the terminal |
 | `fs:home` | reading the home folder |
+| `prompt` | typing prompts into the project's Claude tab, and sending them (`ctx.claude.insertPrompt`) |
 | `network` | network access (not available yet in the app: refused) |
 | `secrets` | secrets of the system keyring (not available yet) |

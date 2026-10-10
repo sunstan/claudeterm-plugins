@@ -10,7 +10,7 @@ import { join, relative, sep } from 'node:path'
 const ROOT = new URL('..', import.meta.url).pathname
 const PLUGINS = join(ROOT, 'plugins')
 /** the app's permissions (src/shared/plugins.ts PLUGIN_PERMISSIONS) */
-export const PERMISSIONS = ['process', 'fs:home', 'network', 'secrets']
+export const PERMISSIONS = ['process', 'fs:home', 'network', 'secrets', 'prompt']
 /** under the app's install limits (plugin-store.ts LIMITS), with room to spare */
 const MAX_BYTES = 5 * 1024 * 1024, MAX_FILES = 500
 /** what a plugin ships: code, data, docs and images; nothing that runs outside the sandbox */
