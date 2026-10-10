@@ -1,4 +1,15 @@
 {
   "version": 1,
-  "plugins": []
+  "plugins": [
+    {
+      "id": "claudeterm.example",
+      "name": "Exemple : Markdown du projet",
+      "description": "Liste les fichiers Markdown à la racine du projet ouvert et les ouvre dans l'éditeur. Sert de modèle pour écrire un plugin.",
+      "version": "1.0.0",
+      "permissions": [],
+      "repo": "https://github.com/sunstan/claudeterm-plugins/tree/main/plugins/claudeterm.example",
+      "url": "https://github.com/sunstan/claudeterm-plugins/releases/download/claudeterm.example%401.0.0/claudeterm.example-1.0.0.tgz",
+      "sha256": "16c0d43481d11ac568adba682955978031c94d0bbd0a78c494633044a76d14dc"
+    }
+  ]
 }
