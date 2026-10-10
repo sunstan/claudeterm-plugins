@@ -1,0 +1,30 @@
+# On main: each plugin version not released yet gets a release <id>@<version> with its .tgz, and registry.json (the
+# catalogue the app reads) is written again and committed. A released version keeps its archive.
+name: release
+on:
+  push:
+    branches: [main]
+    paths: ['plugins/**', 'scripts/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: release
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/validate.mjs
+      - run: node scripts/release.mjs --repo ${{ github.repository }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Commit registry.json
+        run: |
+          git diff --quiet registry.json && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add registry.json
+          git commit -m 'registry.json: catalogue updated'
+          git push

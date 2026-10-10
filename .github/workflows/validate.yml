@@ -1,0 +1,16 @@
+# Every pull request: the plugin it changes follows the rules (scripts/validate.mjs), its version goes up.
+name: validate
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/validate.mjs --pr origin/${{ github.base_ref }}
+      - run: node scripts/validate.mjs

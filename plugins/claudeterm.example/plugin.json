@@ -1,0 +1,16 @@
+{
+  "id": "claudeterm.example",
+  "name": "Exemple : Markdown du projet",
+  "version": "1.0.0",
+  "description": "Liste les fichiers Markdown à la racine du projet ouvert et les ouvre dans l'éditeur. Sert de modèle pour écrire un plugin.",
+  "main": "main.js",
+  "permissions": [],
+  "contributes": {
+    "activity": [
+      { "id": "example", "side": "left", "title": "Exemple", "icon": "file" }
+    ],
+    "views": [
+      { "id": "docs", "activity": "example", "title": "Markdown du projet" }
+    ]
+  }
+}
